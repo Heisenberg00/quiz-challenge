@@ -47,7 +47,7 @@ const Answers = forwardRef((props, ref) => {
     if (selected.value) {
       return answer.correct
         ? 'btn-dark'
-        : answer.value === selected.value ? 'btn-outline-secondary' : ''
+        : answer.value === selected.value ? 'btn-outline-dark' : ''
     }
   }
 
