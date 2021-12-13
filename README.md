@@ -3,11 +3,12 @@
 ---
 # Demo Quiz Chellenge
 
-![Demo](https://github.com/Heisenberg00/challenge-quiz/master/docs/quiz-challenge.gif)
+![Demo](https://raw.githubusercontent.com/Heisenberg00/quiz-challenge/master/docs/quiz-challenge.gif)
 
 # Outlier Engineering React Quiz Challenge
 
 Quizes are common feature of our student-facing apps. Can you build a simple quiz interface with React while following [Outlier's best practices](https://github.com/outlier-org/onboarding/blob/master/README.md#engineering-onboarding-guide)?
+
 
 ## The Challenge
 
