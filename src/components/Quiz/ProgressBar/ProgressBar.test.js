@@ -1,22 +1,16 @@
 import React from 'react'
 import ProgressBar from './ProgressBar'
-import { configure, mount } from 'enzyme'
-import ReactSixteenAdapter from 'enzyme-adapter-react-16'
+import { shallow } from 'enzyme'
 
-let container
-configure({ adapter: new ReactSixteenAdapter() })
+describe('Should render and display the right progression', () => {
 
-beforeEach(() => {
-  container = document.createElement('div')
-  document.body.appendChild(container)
-})
+  const wrapper = shallow(<ProgressBar progress={16 / 20} />)
+  it('should be in the document', () => {
+    expect(wrapper).toBeTruthy()
+  })
 
-afterEach(() => {
-  document.body.removeChild(container)
-  container = null
-})
+  it('should fill the progress bar by 80% on question 16/20.', () => {
+    expect(wrapper.find('.progress-bar').prop('style')).toHaveProperty('width', '80%')
+  })
 
-it('should fill the progress bar by 80% on question 16/20.', () => {
-  const wrapper = mount(<ProgressBar progress={16 / 20} />)
-  expect(wrapper.find('.progress-bar').prop('style')).toHaveProperty('width', '80%')
 })

@@ -1,8 +1,9 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import './Answers.css'
+import { combineAnswers } from '../../../utils/arrayHelper'
 
 const Answers = forwardRef((props, ref) => {
-  const [answerOptions, setAnswerOptions] = useState(combineAnswers())
+  const [answerOptions, setAnswerOptions] = useState([])
   const [selected, setSelected] = useState({})
   const [isDisabled, setIsDisabled] = useState(false)
   const [flag, setFlag] = useState(false)
@@ -19,20 +20,8 @@ const Answers = forwardRef((props, ref) => {
   )
 
   useEffect(() => {
-    setAnswerOptions(combineAnswers())
+    setAnswerOptions(combineAnswers(props.wrong, props.correct))
   }, [flag])
-
-  function combineAnswers () {
-    const answers = [...props.wrong, props.correct]
-    const combineAnswers = []
-    answers.forEach((answer) => {
-      combineAnswers.push({
-        value: answer,
-        correct: props.correct === answer
-      })
-    })
-    return combineAnswers.sort(() => Math.random() - 0.5)
-  }
 
   const handleClick = (answer) => {
     props.isCorrect(answer.correct)
@@ -56,6 +45,7 @@ const Answers = forwardRef((props, ref) => {
       {answerOptions.map((answer, i) => (
         <div key={i.toString()} className='col-6 p-2'>
           <button
+            data-testid={ i + "answer"}
             disabled={isDisabled}
             onClick={() => handleClick(answer)}
             className={answerButtonClass(answer) + ' btn col'}>
